@@ -1,0 +1,32 @@
+button {
+    padding: 20px;
+    border-radius: 100%;
+    margin: 4px;
+}
+
+#calcBody {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: thin solid black;
+    border-radius: 8px;
+    width: 400px;
+    height: 720px;
+    justify-self: center;
+    background-color: lightblue;
+}
+
+
+#inputs {
+    display: flex;
+    flex-direction: column;
+}
+
+#numbers, 
+#operators {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 4px;
+}
