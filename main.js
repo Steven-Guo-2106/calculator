@@ -43,6 +43,7 @@ function makeCalc(){
     const numbers = document.querySelector("#numbers");
     for(let i=1; i<11; i++){
         const num = document.createElement("button");
+        num.setAttribute("class", "nums");
         num.textContent = `${i%10}`;
         num.addEventListener("click", ()=> {
             if(operator == ""){
