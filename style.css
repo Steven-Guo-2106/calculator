@@ -48,9 +48,16 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     flex-shrink: 0;
-    justify-content: center;
     gap: 6px;
     margin-top: 16px;
+}
+
+#operators {
+    justify-content: center;
+}
+
+#numbers {
+    justify-content: flex-end;
 }
 
 .nums {
@@ -60,5 +67,5 @@ button:hover {
 
 .operator {
     border-radius: 8px;
-    padding: 12px 24px;
+    padding: 12px 23px;
 }

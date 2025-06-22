@@ -11,7 +11,7 @@ function multiply(a, b){
 };
 
 function divide(a, b){
-    return a/b;
+    return Math.floor(a/b*100)/100;
 }
 
 let num1 = "";
@@ -29,6 +29,10 @@ function operate(num1, num2, operator){
     } else {
         return divide(num1, num2);
     }
+}
+
+function backspace(string){
+    return string.slice(0, string.length-1);
 }
 
 
@@ -61,6 +65,24 @@ function makeCalc(){
         })
         numbers.appendChild(num);
     }
+
+    const equals = document.createElement("button");
+    equals.textContent = "=";
+    equals.setAttribute("class", "nums");
+    equals.addEventListener("click", ()=>{ 
+        let solution = operate(num1, num2, operator);
+        if(num1 !="" && num2 !="" && operator !=""){
+            displayOp.textContent = solution;
+            num1=solution;
+            num2="";
+            operator="";
+            solved=true;
+        } else {
+            displayOp.textContent = `${num1} ${operator} ${num2}`;
+        }
+    });
+    numbers.appendChild(equals);
+
     const operators = document.querySelectorAll(".operator");
     operators.forEach((btn)=>{
         btn.addEventListener("click", ()=>{
@@ -69,13 +91,15 @@ function makeCalc(){
                 num2="";
                 operator="";
                 displayOp.textContent = `${num1} ${operator} ${num2}`;
-            } else if(btn.textContent == "="){
-                let solution = operate(num1, num2, operator);
-                displayOp.textContent = solution;
-                num1=solution;
-                num2="";
-                operator="";
-                solved=true;
+            } else if(btn.textContent == "del"){
+                if(num2 != ""){
+                    num2 = backspace(num2.toString());
+                } else if (operator != ""){
+                    operator = "";
+                } else if(num1 != ""){
+                    num1 = backspace(num1.toString());
+                }
+                displayOp.textContent = `${num1} ${operator} ${num2}`;
             } else {
                 if(operator != "" && num2 !=""){
                     num1 = operate(num1, num2, operator);
